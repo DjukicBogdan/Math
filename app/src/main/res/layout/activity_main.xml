@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+    //main Layout
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        //header layout
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:textSize="25dp"
+                android:layout_weight="1"
+                android:text=" Level: ">
+            </TextView>
+            <TextView
+                android:id="@+id/level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_weight="1"
+                android:text="01">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:textSize="25dp"
+                android:layout_weight="1"
+                android:text=" Time: ">
+            </TextView>
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_weight="1"
+                android:text="00">
+            </TextView>
+
+        </LinearLayout> //end of header layout
+
+        //body layout
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="50dp">
+                <TextView
+                    android:id="@+id/question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="35dp"
+                    android:text="1 + 1 = ?"
+                    android:layout_gravity="center"
+                    android:textAlignment="center">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="35dp"
+                    android:text=""
+                    android:inputType="number"
+                    android:layout_gravity="center"
+                    android:textAlignment="center">
+
+                </EditText>
+
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="25dp"
+                android:layout_marginTop="20dp"
+                android:text="do math\n">
+
+            </TextView>
+
+                <Button
+                    android:id="@+id/btnGo"
+                    android:layout_width="200dp"
+                    android:layout_height="70dp"
+                    android:textSize="30dp"
+                    android:text="Enter"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center">
+
+                </Button>
+
+
+        </LinearLayout> //end of body layout
+
+    </LinearLayout> //end of main Layout
+
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_main"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation">
+
+    </fragment>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
