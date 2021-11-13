@@ -10,12 +10,6 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.math.databinding.ActivityMainBinding;
 
 import java.util.Random;
 import java.util.Timer;
@@ -23,7 +17,6 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
     public String Level;
     public int levelNum;
     public String answer;
@@ -35,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public Button btnGo;
     public EditText answerEditText;
     public TextView questionTextView;
+    public TextView questionTextView2;
+    public TextView questionTextView3;
     public TextView timerTextView;
     public TextView levelTextView;
     public TextView commentTextView;
@@ -45,18 +40,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_main);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+      
         extraTime = 0;
         Level = "01";
         levelNum = 1;
@@ -69,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         levelTextView = (TextView) findViewById(R.id.level);
         commentTextView = (TextView) findViewById(R.id.comment);
         questionTextView = (TextView) findViewById(R.id.question);
+        questionTextView2 = (TextView) findViewById(R.id.question2);
+        questionTextView3 = (TextView) findViewById(R.id.question3);
 
         answerEditText.setEnabled(true);
         answerEditText.requestFocus();
@@ -108,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         Level = String.valueOf(levelNum);
                         levelTextView.setText(Level);
                     }
-                    questionTextView.setText(question + " = " + res);
+                    questionTextView3.setText(question + " = " + res);
                     btnGo.setText("next");
                     start = false;
                 }
@@ -126,9 +115,11 @@ public class MainActivity extends AppCompatActivity {
         Random rnd = new Random();
         int num1 = rnd.nextInt(10 * levelNum * levelNum * levelNum);
         int num2 = rnd.nextInt(10 * levelNum * levelNum * levelNum);
-        question = num1 + " + " + num2;
+        question = String.format("%,d", num1) + " + " + String.format("%,d", num2);
         res = num1 + num2;
-        questionTextView.setText("" + question + " = ?");
+        questionTextView.setText("" + String.format("%,d", num1));
+        questionTextView2.setText("+ " + String.format("%,d", num2));
+        questionTextView3.setText(" = ?");
         if ( levelNum % 2 == 0 ) extraTime++;
         second = 10 + extraTime;
         start = true;
@@ -150,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                         start = false;
                         commentTextView.setText("Time is over!\n");
                         commentTextView.setBackgroundColor(getResources().getColor(R.color.red));
-                        questionTextView.setText(question + " = " + res);
+                        questionTextView.setText(question + " = " + String.format("%,d ", res));
                         btnGo.setText("next");
                         levelNum--;
                         if (levelNum < 1) levelNum = 1;
