@@ -15,8 +15,7 @@
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:layout_constraintRight_toRightOf="parent" />
     //main Layout
     <LinearLayout
         app:layout_constraintTop_toTopOf="parent"
@@ -68,31 +67,58 @@
 
         //body layout
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/question"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="50dp">
-                <TextView
-                    android:id="@+id/question"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="35dp"
-                    android:text="1 + 1 = ?"
-                    android:layout_gravity="center"
-                    android:textAlignment="center">
+                android:layout_height="wrap_content"
+                android:textSize="35dp"
+                android:text="1"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:paddingEnd="20dp">
 
-                </TextView>
-                <EditText
-                    android:id="@+id/answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="35dp"
-                    android:text=""
-                    android:inputType="number"
-                    android:layout_gravity="center"
-                    android:textAlignment="center">
+            </TextView>
+            <TextView
+                android:id="@+id/question2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="35dp"
+                android:text="+ 1"
+                android:paddingEnd="20dp"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd">
 
-                </EditText>
+            </TextView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"></View>
+            <TextView
+                android:id="@+id/question3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="35dp"
+                android:text="= ?"
+                android:paddingEnd="20dp"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd">
+
+            </TextView>
+            <EditText
+                android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="35dp"
+                android:text=""
+                android:inputType="number"
+                android:layout_gravity="center"
+                android:textAlignment="center">
+
+            </EditText>
 
             <TextView
                 android:id="@+id/comment"
@@ -106,34 +132,19 @@
 
             </TextView>
 
-                <Button
-                    android:id="@+id/btnGo"
-                    android:layout_width="200dp"
-                    android:layout_height="70dp"
-                    android:textSize="30dp"
-                    android:text="Enter"
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center">
+            <Button
+                android:id="@+id/btnGo"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:textSize="30dp"
+                android:text="Enter"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center">
 
-                </Button>
+            </Button>
 
 
         </LinearLayout> //end of body layout
 
-    </LinearLayout> //end of main Layout
-
-    <fragment
-        android:id="@+id/nav_host_fragment_activity_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation">
-
-    </fragment>
-
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
