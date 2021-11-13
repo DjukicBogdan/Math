@@ -84,20 +84,20 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     if (ans == res) {
-                        commentTextView.setText(question + " = " + answer + "\n is correct!");
+                        commentTextView.setText("correct!");
                         answerEditText.setBackgroundColor(getResources().getColor(R.color.green));
                         levelNum++;
                         Level = String.valueOf(levelNum);
                         levelTextView.setText(Level);
                     } else {
                         answerEditText.setBackgroundColor(getResources().getColor(R.color.red));
-                        commentTextView.setText(question + " = " + answer + " \n is wrong!");
+                        commentTextView.setText("wrong!");
                         levelNum--;
                         if (levelNum < 1) levelNum = 1;
                         Level = String.valueOf(levelNum);
                         levelTextView.setText(Level);
                     }
-                    questionTextView3.setText(question + " = " + res);
+                    questionTextView3.setText(" = " + res);
                     btnGo.setText("next");
                     start = false;
                 }
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         if ( levelNum % 2 == 0 ) extraTime++;
         second = 10 + extraTime;
         start = true;
-        commentTextView.setText("do math\n");
+        commentTextView.setText("do math");
         answerEditText.setText("");
         answerEditText.requestFocus();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
@@ -139,9 +139,9 @@ public class MainActivity extends AppCompatActivity {
                 if (start) {
                     if (second <= 0) {
                         start = false;
-                        commentTextView.setText("Time is over!\n");
+                        commentTextView.setText("Time is over!");
                         commentTextView.setBackgroundColor(getResources().getColor(R.color.red));
-                        questionTextView.setText(question + " = " + String.format("%,d ", res));
+                        questionTextView3.setText(" = " + String.format("%,d ", res));
                         btnGo.setText("next");
                         levelNum--;
                         if (levelNum < 1) levelNum = 1;
